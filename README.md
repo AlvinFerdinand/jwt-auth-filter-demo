@@ -1,11 +1,12 @@
 # jwt-auth-filter-demo
 
-> **Demo reconstruction of a real production pattern.** The authentication
-> layer this mirrors was built during my IT internship at **GSI Group**
-> (Semarang, Indonesia). That system's code, configuration and data are
-> the company's and are **not** published here - this repository is a
-> clean-room rebuild of the approach, written from scratch against an
-> in-memory database so the design can be shown and tested in the open.
+> **A learning implementation, not a rebuild of production work.** Unlike
+> the other demo repos on this profile, this one does not mirror a system
+> I shipped - the authentication I've built in production is Laravel
+> session-based, not Spring Boot JWT. This exists because I was working
+> through the Spring Security stack and wanted the result to be runnable
+> and tested rather than notes in a document.
+
 
 
 A minimal, from-scratch JWT authentication filter for **Spring Boot 3 /
@@ -29,20 +30,60 @@ mvn spring-boot:run
 
 ```bash
 # 1. Register
+
+> **A learning implementation, not a rebuild of production work.** Unlike
+> the other demo repos on this profile, this one does not mirror a system
+> I shipped - the authentication I've built in production is Laravel
+> session-based, not Spring Boot JWT. This exists because I was working
+> through the Spring Security stack and wanted the result to be runnable
+> and tested rather than notes in a document.
+
 curl -X POST http://localhost:8080/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{"username":"alice","password":"s3cret-password"}'
 
 # 2. Login, get a token
+
+> **A learning implementation, not a rebuild of production work.** Unlike
+> the other demo repos on this profile, this one does not mirror a system
+> I shipped - the authentication I've built in production is Laravel
+> session-based, not Spring Boot JWT. This exists because I was working
+> through the Spring Security stack and wanted the result to be runnable
+> and tested rather than notes in a document.
+
 curl -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username":"alice","password":"s3cret-password"}'
 # -> {"token":"eyJ..."}
 
+> **A learning implementation, not a rebuild of production work.** Unlike
+> the other demo repos on this profile, this one does not mirror a system
+> I shipped - the authentication I've built in production is Laravel
+> session-based, not Spring Boot JWT. This exists because I was working
+> through the Spring Security stack and wanted the result to be runnable
+> and tested rather than notes in a document.
+
+
 # 3. Call a protected endpoint without a token -> 401
+
+> **A learning implementation, not a rebuild of production work.** Unlike
+> the other demo repos on this profile, this one does not mirror a system
+> I shipped - the authentication I've built in production is Laravel
+> session-based, not Spring Boot JWT. This exists because I was working
+> through the Spring Security stack and wanted the result to be runnable
+> and tested rather than notes in a document.
+
 curl -i http://localhost:8080/api/me
 
 # 4. Call it with the token -> 200
+
+> **A learning implementation, not a rebuild of production work.** Unlike
+> the other demo repos on this profile, this one does not mirror a system
+> I shipped - the authentication I've built in production is Laravel
+> session-based, not Spring Boot JWT. This exists because I was working
+> through the Spring Security stack and wanted the result to be runnable
+> and tested rather than notes in a document.
+
 curl http://localhost:8080/api/me -H "Authorization: Bearer eyJ..."
 ```
 

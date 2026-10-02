@@ -1,5 +1,13 @@
 # jwt-auth-filter-demo
 
+> **Demo reconstruction of a real production pattern.** The authentication
+> layer this mirrors was built during my IT internship at **GSI Group**
+> (Semarang, Indonesia). That system's code, configuration and data are
+> the company's and are **not** published here - this repository is a
+> clean-room rebuild of the approach, written from scratch against an
+> in-memory database so the design can be shown and tested in the open.
+
+
 A minimal, from-scratch JWT authentication filter for **Spring Boot 3 /
 Spring Security 6**, written as a standalone demo of a pattern — not
 extracted or copied from any employer/client codebase. Runs with an

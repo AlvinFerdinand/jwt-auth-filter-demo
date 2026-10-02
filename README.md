@@ -61,6 +61,14 @@ before pushing.
 - **`SessionCreationPolicy.STATELESS`** is set explicitly; without it,
   Spring Security still tries to use session/cookie machinery alongside
   the token, producing inconsistent auth behavior.
+- **Default Spring Security returns 403, not 401, for an unauthenticated
+  request** unless you set an explicit `AuthenticationEntryPoint`. 403
+  technically means "I know who you are, and you're not allowed"; 401
+  means "you never proved who you are" - for a pure JWT API, 401 is the
+  correct status, and it takes one explicit `exceptionHandling(...)`
+  bean to get it (see `SecurityConfig`). This repo's CI caught this for
+  real: the first push compiled fine and genuinely looked correct, and
+  the integration test is what caught the wrong status code.
 - **`/api/auth/**` is `permitAll()`** — an easy thing to forget, and
   forgetting it means nobody can ever log in, because the login endpoint
   itself gets blocked by the "must already be authenticated" rule.

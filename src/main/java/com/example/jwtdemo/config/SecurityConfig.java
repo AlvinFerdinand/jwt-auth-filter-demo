@@ -1,9 +1,9 @@
 package com.example.jwtdemo.config;
 
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -38,7 +38,7 @@ public class SecurityConfig {
             // correct status for "you never proved who you are" (403 is
             // for "you proved who you are, but you're not allowed").
             .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpServletResponse.SC_UNAUTHORIZED))
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
             )
             .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin())) // for H2 console
             .authenticationProvider(authenticationProvider)

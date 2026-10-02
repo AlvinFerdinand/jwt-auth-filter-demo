@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: jwt-auth-filter-demo
+  datasource:
+    url: jdbc:h2:mem:demo;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+jwt:
+  # Demo secret only - never commit a real one. In production this comes
+  # from an environment variable, not a file.
+  secret: ZGVtby1zZWNyZXQtZm9yLWxvY2FsLXRlc3Rpbmctb25seS1kby1ub3QtdXNlLWluLXByb2Q=
+  expiration-ms: 3600000
